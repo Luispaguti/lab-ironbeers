@@ -5,6 +5,7 @@ const path = require('path');
 const PunkAPIWrapper = require('punkapi-javascript-wrapper');
 
 const app = express();
+require('./config/hbs.config');
 const punkAPI = new PunkAPIWrapper();
 
 app.set('view engine', 'hbs');
@@ -21,6 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
   res.render('index');
 });
+
 
 app.get('/beers', (req, res) => {
   punkAPI.getBeers()
